@@ -38,7 +38,7 @@ export async function etfMetadata(req: Request, res: Response) {
         result['name'] = domainInfo['args_name']+".ethf";
         result['description'] = domainInfo['args_name']+".ethf, an ETHF name";
         result['background_image'] = bakgroud;
-        result["url"] =  "https://etherfair.space/name/"+domainInfo['args_name']+".ethf";
+        result["url"] =  "https://etherfair.space/view?name="+domainInfo['args_name'];
         result["image"] =  bakgroud ;
         result["image_url"] =  bakgroud ;
         let attributes = [] //"trait_type":"Created Date","display_type":"date","value":1571924851000
