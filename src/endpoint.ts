@@ -7,6 +7,7 @@ import { ensRasterize } from './controller/ensRasterize';
 import { avatarMetadata } from './controller/avatarMetadata';
 import { avatarImage } from './controller/avatarImage';
 import { queryNFTep } from './controller/queryNFT';
+import { queryName } from './controller/queryName';
 
 export default function (app: Express) {
   // #swagger.ignore = true
@@ -26,6 +27,10 @@ export default function (app: Express) {
   app.get(
     '/:networkName/:domainType/:walletAddress(0x[a-fA-F0-9]{40})/domains',
     domain
+  );
+  app.get(
+    '/:networkName/:domainType/:name/exist',
+    queryName
   );
 
 

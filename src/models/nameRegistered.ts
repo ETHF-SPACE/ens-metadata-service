@@ -7,9 +7,9 @@ const NameRegisteredSchema = new Schema({
     address:String,
     blockNumber:{ },
     transactionHash:String,
-    args:{},
-    label:String,
-    owner:String
+    args_name:String,
+    args_owner:String,
+    args_label:String
 
 }, { collection: 'NameRegistered' })
 
