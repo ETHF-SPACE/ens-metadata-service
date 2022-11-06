@@ -8,6 +8,7 @@ import { avatarMetadata } from './controller/avatarMetadata';
 import { avatarImage } from './controller/avatarImage';
 import { queryNFTep } from './controller/queryNFT';
 import { queryName } from './controller/queryName';
+import { etfMetadata } from './controller/etfMetadata';
 
 export default function (app: Express) {
   // #swagger.ignore = true
@@ -15,15 +16,19 @@ export default function (app: Express) {
     res.send('Well done mate To see more go to "/docs"!');
   });
 
-  app.get(
-    '/:networkName/:contractAddress(0x[a-fA-F0-9]{40})/:tokenId',
-    ensMetadata
-  );
+  // app.get(
+  //   '/:networkName/:contractAddress(0x[a-fA-F0-9]{40})/:tokenId',
+  //   ensMetadata
+  // );
+
 
   app.get(
     '/:networkName/:contractAddress(0x[a-fA-F0-9]{40})/:tokenId/image',
     ensImage
   );
+
+
+
   app.get(
     '/:networkName/:domainType/:walletAddress(0x[a-fA-F0-9]{40})/domains',
     domain
@@ -32,6 +37,11 @@ export default function (app: Express) {
     '/:networkName/:domainType/:name/exist',
     queryName
   );
+  app.get(
+    '/:networkName/:domainType/:tokenId',
+    etfMetadata
+  );
+
 
 
   app.get(

@@ -9,7 +9,9 @@ const NameRegisteredSchema = new Schema({
     transactionHash:String,
     args_name:String,
     args_owner:String,
-    args_label:String
+    args_label:String,
+    block_time:Number,
+    args_expires:{},
 
 }, { collection: 'NameRegistered' })
 
