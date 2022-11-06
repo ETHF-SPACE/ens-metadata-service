@@ -2,6 +2,7 @@ import { Express } from 'express';
 
 import { ensMetadata } from './controller/ensMetadata';
 import { ensImage } from './controller/ensImage';
+import { domain } from './controller/domain';
 import { ensRasterize } from './controller/ensRasterize';
 import { avatarMetadata } from './controller/avatarMetadata';
 import { avatarImage } from './controller/avatarImage';
@@ -22,6 +23,11 @@ export default function (app: Express) {
     '/:networkName/:contractAddress(0x[a-fA-F0-9]{40})/:tokenId/image',
     ensImage
   );
+  app.get(
+    '/:networkName/:domainType/:walletAddress(0x[a-fA-F0-9]{40})/domains',
+    domain
+  );
+
 
   app.get(
     '/:networkName/:contractAddress(0x[a-fA-F0-9]{40})/:tokenId/rasterize',

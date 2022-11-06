@@ -5,6 +5,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import docUI                                        from 'redoc-express';
 
 import endpoints                                    from './endpoint';
+var   mongoose = require("mongoose")
 
 const setCacheHeader = function (
   req: Request,
@@ -45,11 +46,14 @@ function shouldCompress(req: Request, res: Response) {
   // fallback to standard filter function
   return compression.filter(req, res);
 }
-
+connect()
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`APP_LOG::App listening on port ${PORT}`);
-});
+function listen() {
+  app.listen(PORT, () => {
+    console.log(`APP_LOG::App listening on port ${PORT}`);
+  });
+}
+
 
 app.get(
   '/docs',
@@ -58,5 +62,16 @@ app.get(
     specUrl: '/assets/doc_output.json',
   })
 );
+function connect() {
+  mongoose.connection
+    .on('error', console.log)
+    .on('disconnected', connect)
+    .once('open', listen);
+  return mongoose.connect("mongodb://ethf_writer:HXNnp8Zs@43.156.149.86:28707/ethf", {
+    keepAlive: 1,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
+}
 
 module.exports = app;

@@ -27,13 +27,14 @@
     "is-svg": "^4.3.2",
     "jsdom": "^19.0.0",
     "lodash": "^4.17.21",
+    "mongoose": "^6.7.1",
     "multiformats": "^9.4.8",
     "redoc-express": "^1.0.0",
     "tsc": "^2.0.3"
   },
   "scripts": {
     "build": "tsc --project ./ && cpx 'src/assets/**' 'dist/assets'",
-    "dev": "ENV=local ts-node-dev --inspect -- src/index.ts",
+    "dev": " ts-node-dev --inspect -- src/index.ts",
     "start": "node dist/index.js",
     "deploy": "ENV=prod yarn build && gcloud app deploy --project=ens-metadata-service",
     "deploy:test": "ENV=prod yarn build && gcloud app deploy --no-promote --project=ens-metadata-service",
